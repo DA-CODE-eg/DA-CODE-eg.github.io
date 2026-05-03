@@ -350,7 +350,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 0}
 .vis-pub{border-color:rgba(0,245,255,.25);color:var(--cyan)}
 .vis-priv{border-color:rgba(247,37,133,.25);color:var(--pink)}
 .rcard-desc{font-size:.79rem;color:var(--muted);line-height:1.65;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .topics{display:flex;flex-wrap:wrap;gap:5px}
 .topic{font-size:.6rem;padding:2px 8px;border-radius:3px;
   background:rgba(0,245,255,.05);color:var(--cyan2);border:1px solid rgba(0,245,255,.12);
@@ -704,7 +704,7 @@ footer a{color:var(--cyan);text-decoration:none}
     <div class="hero-content">
       <div class="hero-eyebrow">
         <span class="eyebrow-line"></span>
-        Desarrolladora · Portfolio Profesional
+        Desarrollo · Portfolio Profesional
         <span class="eyebrow-line"></span>
       </div>
 
@@ -722,7 +722,7 @@ footer a{color:var(--cyan);text-decoration:none}
         <span class="htag">// CSS</span>
         <span class="htag">// JavaScript</span>
         <span class="htag">// GitHub</span>
-        <span class="htag" id="extra-tag">// Desarrolladora</span>
+        <span class="htag" id="extra-tag">// Desarrollo</span>
       </div>
 
       <div class="hero-btns">
@@ -879,7 +879,7 @@ footer a{color:var(--cyan);text-decoration:none}
     <div class="about-grid">
       <div class="about-text">
         <p id="about-bio-p" data-i18n="about_bio">
-          Soy <strong>Darleys</strong>, desarrolladora web apasionada por crear experiencias digitales únicas. Me especializo en el desarrollo frontend con HTML, CSS y JavaScript, siempre buscando que cada proyecto sea funcional y visualmente impactante.
+          Soy <strong>Darleys</strong>, desarrollo web apasionado por crear experiencias digitales únicas. Me especializo en el desarrollo frontend con HTML, CSS y JavaScript, siempre buscando que cada proyecto sea funcional y visualmente impactante.
         </p>
         <p id="about-status-p" style="margin-top:12px;display:flex;align-items:center;gap:10px">
           <span style="display:inline-block;width:8px;height:8px;background:var(--cyan);border-radius:50%;animation:blink 1.4s infinite;flex-shrink:0"></span>
@@ -1259,7 +1259,7 @@ async function init(){
   try{
     const res=await fetch(`${GH}/users/${USER}`);
     const u=await res.json();
-    document.getElementById('hero-bio').textContent=u.bio||'Desarrolladora · Creadora de proyectos en GitHub';
+    document.getElementById('hero-bio').textContent=u.bio||'Desarrollo · Creador de proyectos en GitHub';
     document.getElementById('hero-bio').dataset.source='github';
     if(u.avatar_url)document.getElementById('avatar').src=u.avatar_url;
     document.getElementById('nav-status').textContent='Online';
@@ -1881,11 +1881,11 @@ function renderWebCard(grid,p,i){
 const LANGS = {
   es:{
     nav_web:'Páginas Web',nav_github:'GitHub',nav_about:'Sobre mí',nav_contact:'Contacto',
-    about_title:'Sobre Mí',about_bio:'Soy <strong>Darleys</strong>, desarrolladora web apasionada por crear experiencias digitales únicas.',
+    about_title:'Sobre Mí',about_bio:'Soy <strong>Darleys</strong>, desarrollo web apasionado por crear experiencias digitales únicas.',
     contact_title:'Contacto',contact_form_title:'// Envíame un mensaje',
     cf_name:'Nombre',cf_email:'Email',cf_msg:'Mensaje',cf_send:'Enviar por WhatsApp',lang_label:'ES',
-    hero_eyebrow:'Desarrolladora · Portfolio Profesional',
-    hero_sub_default:'Desarrolladora web creando proyectos únicos en GitHub.',
+    hero_eyebrow:'Desarrollo · Portfolio Profesional',
+    hero_sub_default:'Desarrollo web creando proyectos únicos en GitHub',
     hero_btn1:'Mis Páginas Web',hero_btn2:'Repos GitHub',hero_btn3:'✉ Contacto',
     stat_repos:'Repos',stat_web:'Sitios Web',stat_stars:'Estrellas',stat_push:'Último Push',
     sec1_title:'Páginas Web',sec1_sub:'// proyectos con sitio en vivo',
@@ -1902,7 +1902,7 @@ const LANGS = {
     contact_title:'Contact',contact_form_title:'// Send me a message',
     cf_name:'Name',cf_email:'Email',cf_msg:'Message',cf_send:'Send via WhatsApp',lang_label:'EN',
     hero_eyebrow:'Developer · Professional Portfolio',
-    hero_sub_default:'Web developer creating unique projects on GitHub.',
+    hero_sub_default:'Web development creating unique projects on GitHub.',
     hero_btn1:'My Web Projects',hero_btn2:'GitHub Repos',hero_btn3:'✉ Contact',
     stat_repos:'Repos',stat_web:'Websites',stat_stars:'Stars',stat_push:'Last Push',
     sec1_title:'Web Projects',sec1_sub:'// live projects',
