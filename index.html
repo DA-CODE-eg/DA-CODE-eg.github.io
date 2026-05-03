@@ -437,6 +437,132 @@ footer a{color:var(--cyan);text-decoration:none}
   body{cursor:auto}.btn{cursor:pointer}
 }
 
+/* ── AD POPUP ── */
+#ad-popup{position:fixed;inset:0;z-index:20000;display:none;align-items:center;justify-content:center;
+  background:rgba(4,5,13,.92);backdrop-filter:blur(18px);padding:20px}
+#ad-popup.open{display:flex;animation:fadeUp .4s ease}
+.ad-box{position:relative;max-width:560px;width:100%;border-radius:20px;overflow:hidden;
+  border:1px solid rgba(0,245,255,.2);box-shadow:0 0 80px rgba(0,245,255,.12),0 30px 80px rgba(0,0,0,.8)}
+.ad-close-btn{position:absolute;top:14px;right:14px;z-index:2;
+  background:rgba(4,5,13,.8);border:1px solid rgba(255,255,255,.15);border-radius:8px;
+  color:#fff;width:36px;height:36px;font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;backdrop-filter:blur(8px)}
+.ad-close-btn:hover{background:rgba(247,37,133,.3);border-color:rgba(247,37,133,.5)}
+.ad-img-wrap{width:100%;min-height:200px;background:linear-gradient(135deg,var(--ink2),rgba(0,50,60,.8));
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.ad-img-wrap img{width:100%;height:100%;object-fit:cover;max-height:320px;display:block}
+.ad-img-placeholder{text-align:center;color:var(--muted);padding:40px}
+.ad-img-placeholder svg{opacity:.3;margin-bottom:12px}
+.ad-img-placeholder p{font-family:'Space Mono',monospace;font-size:.72rem}
+.ad-content{padding:24px 28px;background:rgba(8,11,24,.97)}
+.ad-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.08em;
+  background:linear-gradient(90deg,#fff,var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;line-height:1}
+.ad-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:20px}
+.ad-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:8px;
+  background:linear-gradient(135deg,var(--cyan2),var(--cyan));color:#000;font-weight:700;
+  font-size:.85rem;text-decoration:none;border:none;cursor:pointer;transition:all .2s;
+  font-family:'Space Grotesk',sans-serif}
+.ad-btn:hover{box-shadow:0 0 30px rgba(0,245,255,.5);transform:translateY(-1px)}
+
+/* ── WHATSAPP BUTTON ── */
+#wa-btn{position:fixed;bottom:28px;left:28px;z-index:9000;
+  width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.4);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;animation:waPulse 2.5s infinite}
+#wa-btn:hover{transform:scale(1.12);box-shadow:0 8px 30px rgba(37,211,102,.6),0 0 0 0 rgba(37,211,102,.6)}
+#wa-btn svg{width:30px;height:30px}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.4)}
+  50%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 12px rgba(37,211,102,.0)}}
+.wa-tooltip{position:absolute;left:72px;top:50%;transform:translateY(-50%);
+  background:rgba(8,11,24,.95);border:1px solid rgba(37,211,102,.3);
+  border-radius:8px;padding:8px 14px;white-space:nowrap;
+  font-family:'Space Grotesk',sans-serif;font-size:.8rem;color:#fff;
+  opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(10px)}
+#wa-btn:hover .wa-tooltip{opacity:1}
+
+/* ── LANGUAGE SELECTOR ── */
+#lang-btn{position:fixed;top:70px;right:20px;z-index:9100;
+  background:rgba(8,11,24,.9);border:1px solid rgba(0,245,255,.15);
+  border-radius:10px;padding:7px 14px;cursor:pointer;
+  font-family:'Space Mono',monospace;font-size:.72rem;color:var(--cyan);
+  display:flex;align-items:center;gap:7px;transition:all .2s;backdrop-filter:blur(14px)}
+#lang-btn:hover{border-color:rgba(0,245,255,.4);background:rgba(0,245,255,.06)}
+#lang-dropdown{position:fixed;top:110px;right:20px;z-index:9100;
+  background:rgba(8,11,24,.97);border:1px solid rgba(0,245,255,.15);
+  border-radius:12px;overflow:hidden;display:none;min-width:200px;
+  box-shadow:0 20px 60px rgba(0,0,0,.7);backdrop-filter:blur(20px)}
+#lang-dropdown.open{display:block;animation:fadeUp .2s ease}
+.lang-opt{padding:10px 16px;font-family:'Space Grotesk',sans-serif;font-size:.82rem;
+  color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .15s}
+.lang-opt:hover{background:rgba(0,245,255,.06);color:var(--cyan)}
+.lang-opt.active{color:var(--cyan);background:rgba(0,245,255,.04)}
+.lang-flag{font-size:1rem}
+
+/* ── CONTACT SECTION ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-info{display:flex;flex-direction:column;gap:14px}
+.contact-card{
+  display:flex;align-items:center;gap:16px;padding:16px 20px;
+  background:rgba(8,11,24,.75);border:1px solid rgba(0,245,255,.08);
+  border-radius:12px;text-decoration:none;transition:all .22s;
+  position:relative;overflow:hidden;
+}
+.contact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s}
+.contact-card:hover{border-color:rgba(0,245,255,.22);transform:translateX(4px)}
+.contact-card:hover::before{opacity:1}
+.cc-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex-shrink:0}
+.cc-wa{background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2)}
+.cc-email{background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.15)}
+.cc-li{background:rgba(10,102,194,.1);border:1px solid rgba(10,102,194,.25)}
+.cc-gh{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.cc-text{flex:1}
+.cc-label{font-size:.68rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.cc-value{font-size:.88rem;color:var(--text);font-weight:500;margin-top:1px}
+.cc-arrow{color:var(--muted);font-size:.9rem;transition:all .2s}
+.contact-card:hover .cc-arrow{color:var(--cyan);transform:translateX(3px)}
+
+.contact-form{background:rgba(8,11,24,.75);border:1px solid rgba(0,245,255,.08);
+  border-radius:14px;padding:24px}
+.cf-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;
+  color:var(--text);margin-bottom:18px}
+.cf-field{margin-bottom:14px}
+.cf-label{font-size:.68rem;color:var(--muted);font-family:'Space Mono',monospace;
+  letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:6px}
+.cf-input,.cf-textarea{width:100%;background:rgba(0,245,255,.03);border:1px solid rgba(0,245,255,.1);
+  border-radius:8px;padding:11px 14px;color:var(--text);font-family:'Space Grotesk',sans-serif;
+  font-size:.85rem;outline:none;transition:all .22s}
+.cf-input:focus,.cf-textarea:focus{border-color:rgba(0,245,255,.35);box-shadow:0 0 0 3px rgba(0,245,255,.05)}
+.cf-input::placeholder,.cf-textarea::placeholder{color:var(--muted)}
+.cf-textarea{resize:vertical;min-height:110px;line-height:1.6}
+.cf-send{width:100%;padding:12px;border-radius:8px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--cyan2),var(--cyan));color:#000;
+  font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;transition:all .22s;
+  display:flex;align-items:center;justify-content:center;gap:8px}
+.cf-send:hover{box-shadow:0 0 30px rgba(0,245,255,.4);transform:translateY(-1px)}
+.cf-success{text-align:center;padding:20px;color:var(--cyan);font-family:'Space Mono',monospace;
+  font-size:.82rem;display:none}
+
+/* ── ABOUT / SKILLS SECTION ── */
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-text p{font-size:.92rem;color:var(--muted);line-height:1.9;margin-bottom:16px}
+.about-text p strong{color:var(--text)}
+.skills-list{display:flex;flex-direction:column;gap:14px}
+.skill-row{display:flex;flex-direction:column;gap:6px}
+.skill-meta{display:flex;justify-content:space-between;align-items:center}
+.skill-name{font-size:.78rem;font-family:'Space Mono',monospace;color:var(--text);letter-spacing:.04em}
+.skill-pct{font-size:.7rem;font-family:'Space Mono',monospace;color:var(--cyan)}
+.skill-bar{height:6px;background:rgba(0,245,255,.06);border-radius:3px;overflow:hidden}
+.skill-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cyan2),var(--cyan));
+  width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+
 /* ── ADMIN TRIGGER (botón invisible) ── */
 #admin-trigger{position:fixed;bottom:18px;right:18px;width:18px;height:18px;
   background:transparent;border:none;cursor:default;z-index:9999;opacity:0;border-radius:50%}
@@ -536,8 +662,10 @@ footer a{color:var(--cyan);text-decoration:none}
   <div class="nav-inner">
     <a class="nav-logo" href="#">DA—CODE</a>
     <ul class="nav-links">
-      <li><a href="#web-projects">Páginas Web</a></li>
-      <li><a href="#github">GitHub</a></li>
+      <li><a href="#web-projects" data-i18n="nav_web">Páginas Web</a></li>
+      <li><a href="#github" data-i18n="nav_github">GitHub</a></li>
+      <li><a href="#sobre-mi" data-i18n="nav_about">Sobre mí</a></li>
+      <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
       <li><a href="https://github.com/DA-CODE-eg" target="_blank">Perfil ↗</a></li>
     </ul>
     <div class="nav-right">
@@ -666,7 +794,161 @@ footer a{color:var(--cyan);text-decoration:none}
   </div>
 </section>
 
-<footer>
+<!-- AD POPUP -->
+<div id="ad-popup">
+  <div class="ad-box">
+    <button class="ad-close-btn" onclick="closeAdPopup()">✕</button>
+    <div class="ad-img-wrap" id="ad-img-wrap">
+      <div class="ad-img-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+        <p>// imagen del anuncio</p>
+      </div>
+    </div>
+    <div class="ad-content">
+      <div class="ad-title" id="ad-popup-title">¡Bienvenid@!</div>
+      <p class="ad-desc" id="ad-popup-desc">Explora mi portafolio y descubre todos mis proyectos web. ¡Hay novedades!</p>
+      <a href="#" class="ad-btn" id="ad-popup-btn" target="_blank">Ver proyectos →</a>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a id="wa-btn" href="#" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-tooltip">💬 Escríbeme</span>
+</a>
+
+<!-- LANGUAGE BUTTON -->
+<button id="lang-btn" onclick="toggleLangDropdown()">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+  <span id="lang-current">ES</span>
+  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div id="lang-dropdown">
+  <div class="lang-opt active" data-lang="es" onclick="setLang('es')"><span class="lang-flag">🇪🇸</span>Español</div>
+  <div class="lang-opt" data-lang="en" onclick="setLang('en')"><span class="lang-flag">🇺🇸</span>English</div>
+  <div class="lang-opt" data-lang="fr" onclick="setLang('fr')"><span class="lang-flag">🇫🇷</span>Français</div>
+  <div class="lang-opt" data-lang="pt" onclick="setLang('pt')"><span class="lang-flag">🇧🇷</span>Português</div>
+  <div class="lang-opt" data-lang="de" onclick="setLang('de')"><span class="lang-flag">🇩🇪</span>Deutsch</div>
+  <div class="lang-opt" data-lang="it" onclick="setLang('it')"><span class="lang-flag">🇮🇹</span>Italiano</div>
+  <div class="lang-opt" data-lang="zh" onclick="setLang('zh')"><span class="lang-flag">🇨🇳</span>中文</div>
+  <div class="lang-opt" data-lang="ja" onclick="setLang('ja')"><span class="lang-flag">🇯🇵</span>日本語</div>
+  <div class="lang-opt" data-lang="ar" onclick="setLang('ar')"><span class="lang-flag">🇸🇦</span>العربية</div>
+  <div class="lang-opt" data-lang="hi" onclick="setLang('hi')"><span class="lang-flag">🇮🇳</span>हिन्दी</div>
+  <div class="lang-opt" data-lang="ko" onclick="setLang('ko')"><span class="lang-flag">🇰🇷</span>한국어</div>
+  <div class="lang-opt" data-lang="ru" onclick="setLang('ru')"><span class="lang-flag">🇷🇺</span>Русский</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SOBRE MÍ ══ -->
+<section class="sec" id="sobre-mi">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div class="sec-info">
+        <div class="sec-title" data-i18n="about_title">Sobre Mí</div>
+        <div class="sec-sub">// who i am · mi historia · mis metas</div>
+      </div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p id="about-bio-p" data-i18n="about_bio">
+          Soy <strong>Darleys</strong>, desarrolladora web apasionada por crear experiencias digitales únicas. Me especializo en el desarrollo frontend con HTML, CSS y JavaScript, siempre buscando que cada proyecto sea funcional y visualmente impactante.
+        </p>
+        <p id="about-status-p" style="margin-top:12px;display:flex;align-items:center;gap:10px">
+          <span style="display:inline-block;width:8px;height:8px;background:var(--cyan);border-radius:50%;animation:blink 1.4s infinite;flex-shrink:0"></span>
+          <span id="about-status-txt" style="font-size:.85rem;color:var(--cyan);font-family:'Space Mono',monospace">Disponible para proyectos freelance</span>
+        </p>
+      </div>
+      <div class="skills-list" id="skills-list">
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name">HTML</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name">CSS</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name">JavaScript</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name">GitHub</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CONTACTO ══ -->
+<section class="sec" id="contacto">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div class="sec-info">
+        <div class="sec-title" data-i18n="contact_title">Contacto</div>
+        <div class="sec-sub">// hablemos · let's connect</div>
+      </div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a class="contact-card" id="cc-wa" href="#" target="_blank">
+          <div class="cc-icon cc-wa">💬</div>
+          <div class="cc-text">
+            <div class="cc-label">WhatsApp</div>
+            <div class="cc-value" id="cc-wa-val">+57 3144231604</div>
+          </div>
+          <span class="cc-arrow">→</span>
+        </a>
+        <a class="contact-card" id="cc-email" href="mailto:gruendgru@gmail.com">
+          <div class="cc-icon cc-email">✉</div>
+          <div class="cc-text">
+            <div class="cc-label">Email</div>
+            <div class="cc-value" id="cc-email-val">gruendgru@gmail.com</div>
+          </div>
+          <span class="cc-arrow">→</span>
+        </a>
+        <a class="contact-card" id="cc-li" href="#" target="_blank">
+          <div class="cc-icon cc-li">💼</div>
+          <div class="cc-text">
+            <div class="cc-label">LinkedIn</div>
+            <div class="cc-value" id="cc-li-val">linkedin.com/in/darleys</div>
+          </div>
+          <span class="cc-arrow">→</span>
+        </a>
+        <a class="contact-card" href="https://github.com/DA-CODE-eg" target="_blank">
+          <div class="cc-icon cc-gh">🐙</div>
+          <div class="cc-text">
+            <div class="cc-label">GitHub</div>
+            <div class="cc-value" id="cc-gh-val">github.com/DA-CODE-eg</div>
+          </div>
+          <span class="cc-arrow">→</span>
+        </a>
+      </div>
+      <div class="contact-form">
+        <div class="cf-title" data-i18n="contact_form_title">// Envíame un mensaje</div>
+        <div class="cf-field">
+          <label class="cf-label" data-i18n="cf_name">Nombre</label>
+          <input class="cf-input" id="cf-name" placeholder="Tu nombre" autocomplete="off"/>
+        </div>
+        <div class="cf-field">
+          <label class="cf-label" data-i18n="cf_email">Email</label>
+          <input class="cf-input" id="cf-email-inp" placeholder="tu@email.com" type="email"/>
+        </div>
+        <div class="cf-field">
+          <label class="cf-label" data-i18n="cf_msg">Mensaje</label>
+          <textarea class="cf-textarea" id="cf-msg" placeholder="Cuéntame sobre tu proyecto..."></textarea>
+        </div>
+        <button class="cf-send" onclick="sendContactMsg()" data-i18n="cf_send">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Enviar por WhatsApp
+        </button>
+        <div class="cf-success" id="cf-success">
+          ✅ ¡Mensaje listo! Se abrirá WhatsApp para enviarlo.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
   <div class="container">
     <p>© 2025 <a href="https://github.com/DA-CODE-eg" target="_blank">DARLEYS · DA-CODE-eg</a>
     &nbsp;·&nbsp; GitHub API &nbsp;·&nbsp;
@@ -700,8 +982,11 @@ footer a{color:var(--cyan);text-decoration:none}
   </div>
   <div class="ap-body">
     <div class="ap-tabs">
-      <button class="ap-tab active" onclick="switchTab('repos')">🐙 Repos GitHub</button>
-      <button class="ap-tab" onclick="switchTab('web')">🌐 Páginas Web</button>
+      <button class="ap-tab active" onclick="switchTab('repos')">🐙 Repos</button>
+      <button class="ap-tab" onclick="switchTab('web')">🌐 Páginas</button>
+      <button class="ap-tab" onclick="switchTab('anuncio')">📢 Anuncio</button>
+      <button class="ap-tab" onclick="switchTab('contacto')">📞 Contacto</button>
+      <button class="ap-tab" onclick="switchTab('sobre')">👤 Sobre mí</button>
     </div>
 
     <!-- REPOS TAB -->
@@ -715,10 +1000,114 @@ footer a{color:var(--cyan);text-decoration:none}
     <div class="ap-section" id="tab-web">
       <div class="ap-hint">// Arrastra para reordenar · Activa/desactiva el switch para mostrar u ocultar · Edita la descripción de cada página</div>
       <div class="admin-list" id="admin-web-list"></div>
+      <!-- ADD PAGE FORM -->
+      <div id="add-web-form-wrap" style="margin-top:20px;background:rgba(0,245,255,.03);border:1px dashed rgba(0,245,255,.15);border-radius:10px;padding:18px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--cyan);margin-bottom:14px">＋ AGREGAR NUEVA PÁGINA WEB</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div><label style="font-size:.62rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px">Nombre</label><input class="ar-desc-edit" style="min-height:0;height:36px" id="nw-name" placeholder="Mi Proyecto"/></div>
+          <div><label style="font-size:.62rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px">URL</label><input class="ar-desc-edit" style="min-height:0;height:36px" id="nw-url" placeholder="https://..."/></div>
+          <div><label style="font-size:.62rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px">GitHub (opcional)</label><input class="ar-desc-edit" style="min-height:0;height:36px" id="nw-github" placeholder="https://github.com/..."/></div>
+          <div><label style="font-size:.62rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px">Tipo</label>
+          <select class="ar-desc-edit" style="min-height:0;height:36px" id="nw-type">
+            <option>Página Web</option><option>Aplicación</option><option>Herramienta</option><option>Diseño</option>
+          </select></div>
+        </div>
+        <div style="margin-top:10px"><label style="font-size:.62rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px">Descripción</label><input class="ar-desc-edit" style="min-height:0;height:36px" id="nw-desc" placeholder="Descripción corta..."/></div>
+        <div style="margin-top:10px"><label style="font-size:.62rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px">Tecnologías (separadas por coma)</label><input class="ar-desc-edit" style="min-height:0;height:36px" id="nw-techs" placeholder="HTML, CSS, JS"/></div>
+        <button onclick="addCustomPage()" style="margin-top:14px;padding:9px 22px;border-radius:8px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--cyan2),var(--cyan));color:#000;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em">＋ AGREGAR</button>
+      </div>
       <div class="save-msg" id="save-msg-web"></div>
     </div>
-  </div>
-</div>
+
+    <!-- ANUNCIO TAB -->
+    <div class="ap-section" id="tab-anuncio">
+      <div class="ap-hint">// Configura el anuncio popup que aparece al entrar a la página · Actívalo o desactívalo cuando quieras</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">Título del anuncio</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ad-title-inp" placeholder="¡Novedad!"/>
+        </div>
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">Texto del botón (opcional)</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ad-btn-txt" placeholder="Ver más →"/>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <label class="cf-label" style="margin-bottom:8px;display:block">Descripción</label>
+        <textarea class="ar-desc-edit" id="ad-desc-inp" placeholder="Escribe el mensaje del anuncio..." style="min-height:80px"></textarea>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">Link del botón (opcional)</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ad-btn-url" placeholder="https://..."/>
+        </div>
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">URL de imagen (opcional)</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ad-img-url" placeholder="https://imagen.com/img.jpg"/>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(0,245,255,.03);border-radius:10px;border:1px solid rgba(0,245,255,.1)">
+        <label class="ar-toggle" style="margin:0"><input type="checkbox" id="ad-enabled"><span class="ar-slider"></span></label>
+        <div>
+          <div style="font-size:.85rem;color:var(--text)">Mostrar anuncio al entrar</div>
+          <div style="font-size:.68rem;color:var(--muted);font-family:'Space Mono',monospace">// activa para que el popup aparezca automáticamente</div>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <button onclick="saveAdConfig()" style="padding:10px 26px;border-radius:8px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--cyan2),var(--cyan));color:#000;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em">💾 GUARDAR ANUNCIO</button>
+        <span id="ad-save-msg" style="font-size:.72rem;color:var(--cyan);font-family:'Space Mono',monospace;margin-left:14px;opacity:0;transition:opacity .3s"></span>
+      </div>
+    </div>
+
+    <!-- CONTACTO TAB -->
+    <div class="ap-section" id="tab-contacto">
+      <div class="ap-hint">// Configura tus datos de contacto · Se muestran en la sección de contacto de tu portafolio</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">📱 WhatsApp (número con código país)</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ct-wa" placeholder="+57 3144231604"/>
+        </div>
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">✉ Email</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ct-email" placeholder="correo@gmail.com"/>
+        </div>
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">💼 LinkedIn (URL completa)</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ct-li" placeholder="https://linkedin.com/in/usuario"/>
+        </div>
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">🐙 GitHub (URL)</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ct-gh" placeholder="https://github.com/DA-CODE-eg"/>
+        </div>
+        <div>
+          <label class="cf-label" style="margin-bottom:8px;display:block">💬 Mensaje predeterminado de WhatsApp</label>
+          <input class="ar-desc-edit" style="min-height:0;height:40px" id="ct-wa-msg" placeholder="Hola, vi tu portafolio y quiero contactarte"/>
+        </div>
+      </div>
+      <div style="margin-top:18px">
+        <button onclick="saveContactConfig()" style="padding:10px 26px;border-radius:8px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--cyan2),var(--cyan));color:#000;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em">💾 GUARDAR CONTACTO</button>
+        <span id="ct-save-msg" style="font-size:.72rem;color:var(--cyan);font-family:'Space Mono',monospace;margin-left:14px;opacity:0;transition:opacity .3s"></span>
+      </div>
+    </div>
+
+    <!-- SOBRE MÍ TAB -->
+    <div class="ap-section" id="tab-sobre">
+      <div class="ap-hint">// Edita tu información personal · Se mostrará en la sección "Sobre mí" de tu portafolio</div>
+      <div style="margin-bottom:14px">
+        <label class="cf-label" style="margin-bottom:8px;display:block">Presentación (1-2 párrafos)</label>
+        <textarea class="ar-desc-edit" id="sm-bio" placeholder="Cuéntale al mundo quién eres, qué haces y qué te apasiona..." style="min-height:120px"></textarea>
+      </div>
+      <div style="margin-bottom:14px">
+        <label class="cf-label" style="margin-bottom:8px;display:block">Habilidades (nombre:porcentaje, separados por coma — ej: HTML:90,CSS:85,JavaScript:75)</label>
+        <textarea class="ar-desc-edit" id="sm-skills" placeholder="HTML:90,CSS:85,JavaScript:75,GitHub:80" style="min-height:70px"></textarea>
+      </div>
+      <div style="margin-bottom:18px">
+        <label class="cf-label" style="margin-bottom:8px;display:block">Disponibilidad / estado actual</label>
+        <input class="ar-desc-edit" style="min-height:0;height:40px" id="sm-status" placeholder="Disponible para proyectos freelance"/>
+      </div>
+      <button onclick="saveSobreConfig()" style="padding:10px 26px;border-radius:8px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--cyan2),var(--cyan));color:#000;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em">💾 GUARDAR SOBRE MÍ</button>
+      <span id="sm-save-msg" style="font-size:.72rem;color:var(--cyan);font-family:'Space Mono',monospace;margin-left:14px;opacity:0;transition:opacity .3s"></span>
+    </div>
 
 <!-- MODAL -->
 <div class="overlay" id="overlay" onclick="closeOverlay(event)">
@@ -1305,9 +1694,36 @@ async function saveAdminChanges(){
   btn.textContent='💾 Guardar cambios';btn.disabled=false;
 }
 
+/* ─ Add Custom Page ─ */
+let customPagesData = [];
+async function loadCustomPages(){
+  try{
+    const snap = await fbGet('custom_pages');
+    customPagesData = snap ? JSON.parse(snap) : [];
+  }catch(e){ customPagesData=[]; }
+}
+async function addCustomPage(){
+  const name = document.getElementById('nw-name').value.trim();
+  const url = document.getElementById('nw-url').value.trim();
+  const github = document.getElementById('nw-github').value.trim();
+  const desc = document.getElementById('nw-desc').value.trim();
+  const techsRaw = document.getElementById('nw-techs').value.trim();
+  const type = document.getElementById('nw-type').value;
+  if(!name){ alert('El nombre es obligatorio'); return; }
+  const techs = techsRaw ? techsRaw.split(',').map(t=>t.trim()).filter(Boolean) : [];
+  await loadCustomPages();
+  customPagesData.push({name,url,github,desc,techs,type,hidden:false});
+  await fbSet('custom_pages', JSON.stringify(customPagesData));
+  // Clear fields
+  ['nw-name','nw-url','nw-github','nw-desc','nw-techs'].forEach(id=>document.getElementById(id).value='');
+  alert(`✅ "${name}" agregada correctamente. Haz clic en 💾 Guardar cambios.`);
+  buildAdminWeb();
+}
+
 /* ─ Apply Firebase prefs to renders ─ */
 async function applyFirebaseAndRender(){
   _cachedRepos = null; _cachedWeb = null;
+  await loadCustomPages();
   const [savedRepos, savedWeb] = await Promise.all([loadAdminPrefs(), loadWebPrefs()]);
   _renderReposWithData(savedRepos);
   _renderWebWithData(savedWeb);
@@ -1362,7 +1778,15 @@ function _renderReposWithData(saved){
 }
 
 function _renderWebWithData(saved){
-  if(!saved||!saved.length){ renderWeb(); return; }
+  if(!saved||!saved.length){ 
+    const grid=document.getElementById('web-grid');
+    grid.innerHTML='';
+    const allProjects = [...WEB_PROJECTS, ...customPagesData.filter(p=>!p.hidden)];
+    if(!allProjects.length){grid.innerHTML='<div class="empty-msg" style="grid-column:1/-1"><span>🌐</span>Sin proyectos aún.</div>';return;}
+    allProjects.forEach((p,i)=>renderWebCard(grid,p,i));
+    document.getElementById('web-badge').textContent=`${allProjects.length} proy.`;
+    return; 
+  }
   const savedMap={};
   saved.forEach(s=>savedMap[s.idx]=s);
   const orderedIdxs = saved.map(s=>s.idx);
@@ -1372,6 +1796,8 @@ function _renderWebWithData(saved){
       list.push({...WEB_PROJECTS[idx], desc: savedMap[idx]?.desc||WEB_PROJECTS[idx].desc});
   });
   WEB_PROJECTS.forEach((p,idx)=>{ if(!orderedIdxs.includes(idx)) list.push(p); });
+  // Add custom pages
+  customPagesData.filter(p=>!p.hidden).forEach(p=>list.push(p));
   const q=(document.getElementById('web-search')||{}).value?.toLowerCase()||'';
   if(WF!=='all') list=list.filter(p=>p.type===WF);
   if(q) list=list.filter(p=>p.name.toLowerCase().includes(q)||(p.desc||'').toLowerCase().includes(q));
@@ -1379,33 +1805,348 @@ function _renderWebWithData(saved){
   const grid=document.getElementById('web-grid');
   if(!list.length){grid.innerHTML='<div class="empty-msg" style="grid-column:1/-1"><span>🔍</span>Sin resultados.</div>';return;}
   grid.innerHTML='';
-  list.forEach((p,i)=>{
-    const card=document.createElement('div');card.className='wcard';card.style.animationDelay=`${i*.06}s`;
-    const tc=TC[p.type]||'t-web';
-    card.innerHTML=`
-      <div class="wcard-prev">
-        ${p.url?`<iframe src="${p.url}" loading="lazy" sandbox="allow-same-origin allow-scripts" title="${p.name}"></iframe><div class="live-pill">● LIVE</div>`
-          :`<div class="no-prev-wrap"><div class="no-prev-ico">🌐</div><div class="no-prev-lbl">// sin url</div></div><div class="no-live-pill">offline</div>`}
-      </div>
-      <div class="wcard-body">
-        <div class="wcard-top">
-          <div class="wcard-name">${p.name.toUpperCase()}</div>
-          <span class="wcard-type ${tc}">${p.type.toUpperCase()}</span>
-        </div>
-        <p class="wcard-desc">${p.desc}</p>
-        ${p.techs?.length?`<div class="wcard-techs">${p.techs.map(t=>`<span class="tpill" style="border-color:${lc(t)}33;color:${lc(t)}">${t}</span>`).join('')}</div>`:''}
-      </div>
-      <div class="wcard-foot">
-        ${p.url?`<a href="${p.url}" target="_blank" class="btn-acceder"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>ACCEDER</a>`
-          :`<span class="btn-acceder" style="opacity:.3;cursor:default;background:var(--muted)">SIN URL</span>`}
-        ${p.github?`<a href="${p.github}" target="_blank" class="btn-code-sm"><svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Código</a>`:''}
-      </div>`;
-    grid.appendChild(card);
-  });
+  list.forEach((p,i)=>renderWebCard(grid,p,i));
 }
 
-// On page load apply Firebase prefs
-applyFirebaseAndRender();
+function renderWebCard(grid,p,i){
+  const card=document.createElement('div');card.className='wcard';card.style.animationDelay=`${i*.06}s`;
+  const tc=TC[p.type]||'t-web';
+  card.innerHTML=`
+    <div class="wcard-prev">
+      ${p.url?`<iframe src="${p.url}" loading="lazy" sandbox="allow-same-origin allow-scripts" title="${p.name}"></iframe><div class="live-pill">● LIVE</div>`
+        :`<div class="no-prev-wrap"><div class="no-prev-ico">🌐</div><div class="no-prev-lbl">// sin url</div></div><div class="no-live-pill">offline</div>`}
+    </div>
+    <div class="wcard-body">
+      <div class="wcard-top">
+        <div class="wcard-name">${p.name.toUpperCase()}</div>
+        <span class="wcard-type ${tc}">${p.type.toUpperCase()}</span>
+      </div>
+      <p class="wcard-desc">${p.desc||'// sin descripción'}</p>
+      ${p.techs?.length?`<div class="wcard-techs">${p.techs.map(t=>`<span class="tpill" style="border-color:${lc(t)}33;color:${lc(t)}">${t}</span>`).join('')}</div>`:''}
+    </div>
+    <div class="wcard-foot">
+      ${p.url?`<a href="${p.url}" target="_blank" class="btn-acceder"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>ACCEDER</a>`
+        :`<span class="btn-acceder" style="opacity:.3;cursor:default;background:var(--muted)">SIN URL</span>`}
+      ${p.github?`<a href="${p.github}" target="_blank" class="btn-code-sm"><svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Código</a>`:''}
+    </div>`;
+  grid.appendChild(card);
+}
+
+
+/* ═══════════════════════════════════════════
+   TRANSLATIONS (i18n)
+═══════════════════════════════════════════ */
+const LANGS = {
+  es:{nav_web:'Páginas Web',nav_github:'GitHub',nav_about:'Sobre mí',nav_contact:'Contacto',
+    about_title:'Sobre Mí',about_bio:'Soy <strong>Darleys</strong>, desarrolladora web apasionada por crear experiencias digitales únicas.',
+    contact_title:'Contacto',contact_form_title:'// Envíame un mensaje',
+    cf_name:'Nombre',cf_email:'Email',cf_msg:'Mensaje',cf_send:'Enviar por WhatsApp',lang_label:'ES'},
+  en:{nav_web:'Web Projects',nav_github:'GitHub',nav_about:'About me',nav_contact:'Contact',
+    about_title:'About Me',about_bio:'I\'m <strong>Darleys</strong>, a web developer passionate about creating unique digital experiences.',
+    contact_title:'Contact',contact_form_title:'// Send me a message',
+    cf_name:'Name',cf_email:'Email',cf_msg:'Message',cf_send:'Send via WhatsApp',lang_label:'EN'},
+  fr:{nav_web:'Sites Web',nav_github:'GitHub',nav_about:'À propos',nav_contact:'Contact',
+    about_title:'À propos de moi',about_bio:'Je suis <strong>Darleys</strong>, développeuse web passionnée par la création d\'expériences numériques uniques.',
+    contact_title:'Contact',contact_form_title:'// Envoyez-moi un message',
+    cf_name:'Nom',cf_email:'Email',cf_msg:'Message',cf_send:'Envoyer via WhatsApp',lang_label:'FR'},
+  pt:{nav_web:'Páginas Web',nav_github:'GitHub',nav_about:'Sobre mim',nav_contact:'Contato',
+    about_title:'Sobre Mim',about_bio:'Sou <strong>Darleys</strong>, desenvolvedora web apaixonada por criar experiências digitais únicas.',
+    contact_title:'Contato',contact_form_title:'// Me envie uma mensagem',
+    cf_name:'Nome',cf_email:'Email',cf_msg:'Mensagem',cf_send:'Enviar pelo WhatsApp',lang_label:'PT'},
+  de:{nav_web:'Webseiten',nav_github:'GitHub',nav_about:'Über mich',nav_contact:'Kontakt',
+    about_title:'Über mich',about_bio:'Ich bin <strong>Darleys</strong>, eine Webentwicklerin mit Leidenschaft für einzigartige digitale Erlebnisse.',
+    contact_title:'Kontakt',contact_form_title:'// Schreib mir eine Nachricht',
+    cf_name:'Name',cf_email:'E-Mail',cf_msg:'Nachricht',cf_send:'Per WhatsApp senden',lang_label:'DE'},
+  it:{nav_web:'Siti Web',nav_github:'GitHub',nav_about:'Chi sono',nav_contact:'Contatto',
+    about_title:'Chi sono',about_bio:'Sono <strong>Darleys</strong>, sviluppatrice web appassionata di esperienze digitali uniche.',
+    contact_title:'Contatto',contact_form_title:'// Inviami un messaggio',
+    cf_name:'Nome',cf_email:'Email',cf_msg:'Messaggio',cf_send:'Invia via WhatsApp',lang_label:'IT'},
+  zh:{nav_web:'网页项目',nav_github:'GitHub',nav_about:'关于我',nav_contact:'联系我',
+    about_title:'关于我',about_bio:'我是<strong>Darleys</strong>，一位热衷于创造独特数字体验的网页开发者。',
+    contact_title:'联系我',contact_form_title:'// 发送消息',
+    cf_name:'姓名',cf_email:'邮箱',cf_msg:'消息',cf_send:'通过WhatsApp发送',lang_label:'ZH'},
+  ja:{nav_web:'ウェブプロジェクト',nav_github:'GitHub',nav_about:'自己紹介',nav_contact:'お問い合わせ',
+    about_title:'自己紹介',about_bio:'私は<strong>Darleys</strong>です。独自のデジタル体験を生み出すウェブ開発者です。',
+    contact_title:'お問い合わせ',contact_form_title:'// メッセージを送る',
+    cf_name:'名前',cf_email:'メール',cf_msg:'メッセージ',cf_send:'WhatsAppで送る',lang_label:'JA'},
+  ar:{nav_web:'مشاريع الويب',nav_github:'GitHub',nav_about:'عني',nav_contact:'تواصل',
+    about_title:'عني',about_bio:'أنا <strong>Darleys</strong>، مطورة ويب شغوفة بإنشاء تجارب رقمية فريدة.',
+    contact_title:'تواصل معي',contact_form_title:'// أرسل لي رسالة',
+    cf_name:'الاسم',cf_email:'البريد الإلكتروني',cf_msg:'الرسالة',cf_send:'إرسال عبر واتساب',lang_label:'AR'},
+  hi:{nav_web:'वेब प्रोजेक्ट',nav_github:'GitHub',nav_about:'मेरे बारे में',nav_contact:'संपर्क',
+    about_title:'मेरे बारे में',about_bio:'मैं <strong>Darleys</strong> हूं, एक वेब डेवलपर जो अद्वितीय डिजिटल अनुभव बनाने में उत्साही है।',
+    contact_title:'संपर्क करें',contact_form_title:'// मुझे संदेश भेजें',
+    cf_name:'नाम',cf_email:'ईमेल',cf_msg:'संदेश',cf_send:'WhatsApp से भेजें',lang_label:'HI'},
+  ko:{nav_web:'웹 프로젝트',nav_github:'GitHub',nav_about:'소개',nav_contact:'연락처',
+    about_title:'소개',about_bio:'저는 <strong>Darleys</strong>입니다. 독특한 디지털 경험을 만드는 것을 열정으로 하는 웹 개발자입니다.',
+    contact_title:'연락처',contact_form_title:'// 메시지 보내기',
+    cf_name:'이름',cf_email:'이메일',cf_msg:'메시지',cf_send:'WhatsApp으로 보내기',lang_label:'KO'},
+  ru:{nav_web:'Веб-проекты',nav_github:'GitHub',nav_about:'Обо мне',nav_contact:'Контакт',
+    about_title:'Обо мне',about_bio:'Я <strong>Darleys</strong>, веб-разработчик, увлечённый созданием уникальных цифровых опытов.',
+    contact_title:'Контакт',contact_form_title:'// Отправьте мне сообщение',
+    cf_name:'Имя',cf_email:'Email',cf_msg:'Сообщение',cf_send:'Отправить через WhatsApp',lang_label:'RU'}
+};
+
+let currentLang = 'es';
+function setLang(lang){
+  currentLang = lang;
+  const t = LANGS[lang] || LANGS.es;
+  document.getElementById('lang-current').textContent = t.lang_label;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.dataset.i18n;
+    if(t[key]) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lang-opt').forEach(o=>{
+    o.classList.toggle('active', o.dataset.lang===lang);
+  });
+  document.getElementById('lang-dropdown').classList.remove('open');
+  // RTL support
+  document.body.dir = lang==='ar'?'rtl':'ltr';
+}
+function toggleLangDropdown(){
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#lang-btn')&&!e.target.closest('#lang-dropdown')){
+    document.getElementById('lang-dropdown').classList.remove('open');
+  }
+});
+
+/* ═══════════════════════════════════════════
+   AD POPUP
+═══════════════════════════════════════════ */
+function closeAdPopup(){
+  document.getElementById('ad-popup').classList.remove('open');
+  sessionStorage.setItem('ad_closed','1');
+}
+async function loadAndShowAd(){
+  try{
+    const snap = await fbGet('ad_config');
+    if(!snap) return;
+    const ad = JSON.parse(snap);
+    if(!ad.enabled) return;
+    if(sessionStorage.getItem('ad_closed')) return;
+    if(ad.title) document.getElementById('ad-popup-title').textContent = ad.title;
+    if(ad.desc) document.getElementById('ad-popup-desc').textContent = ad.desc;
+    if(ad.imgUrl){
+      document.getElementById('ad-img-wrap').innerHTML=`<img src="${ad.imgUrl}" alt="anuncio" onerror="this.parentElement.innerHTML='<div class=ad-img-placeholder><p>// imagen no disponible</p></div>'"/>`;
+    }
+    if(ad.btnTxt) document.getElementById('ad-popup-btn').textContent = ad.btnTxt;
+    if(ad.btnUrl) document.getElementById('ad-popup-btn').href = ad.btnUrl;
+    else document.getElementById('ad-popup-btn').style.display='none';
+    document.getElementById('ad-popup').classList.add('open');
+  }catch(e){}
+}
+async function saveAdConfig(){
+  const ad = {
+    enabled: document.getElementById('ad-enabled').checked,
+    title: document.getElementById('ad-title-inp').value,
+    desc: document.getElementById('ad-desc-inp').value,
+    btnTxt: document.getElementById('ad-btn-txt').value,
+    btnUrl: document.getElementById('ad-btn-url').value,
+    imgUrl: document.getElementById('ad-img-url').value,
+  };
+  await fbSet('ad_config', JSON.stringify(ad));
+  const msg = document.getElementById('ad-save-msg');
+  msg.textContent='✅ Guardado';msg.style.opacity='1';
+  setTimeout(()=>msg.style.opacity='0',3000);
+}
+async function loadAdminAdConfig(){
+  try{
+    const snap = await fbGet('ad_config');
+    if(!snap) return;
+    const ad = JSON.parse(snap);
+    document.getElementById('ad-enabled').checked = !!ad.enabled;
+    document.getElementById('ad-title-inp').value = ad.title||'';
+    document.getElementById('ad-desc-inp').value = ad.desc||'';
+    document.getElementById('ad-btn-txt').value = ad.btnTxt||'';
+    document.getElementById('ad-btn-url').value = ad.btnUrl||'';
+    document.getElementById('ad-img-url').value = ad.imgUrl||'';
+  }catch(e){}
+}
+
+/* ═══════════════════════════════════════════
+   WHATSAPP
+═══════════════════════════════════════════ */
+let waNumber = '573144231604';
+let waDefaultMsg = 'Hola, vi tu portafolio y quiero contactarte';
+function updateWaButton(){
+  const num = waNumber.replace(/\D/g,'');
+  const msg = encodeURIComponent(waDefaultMsg);
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const url = isMobile
+    ? `whatsapp://send?phone=${num}&text=${msg}`
+    : `https://web.whatsapp.com/send?phone=${num}&text=${msg}`;
+  document.getElementById('wa-btn').href = url;
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT CONFIG
+═══════════════════════════════════════════ */
+async function loadContactConfig(){
+  try{
+    const snap = await fbGet('contact_config');
+    if(!snap) return;
+    const ct = JSON.parse(snap);
+    if(ct.wa){
+      waNumber = ct.wa;
+      const cleanNum = ct.wa.replace(/\D/g,'');
+      document.getElementById('cc-wa-val').textContent = ct.wa;
+      document.getElementById('cc-wa').href = `https://wa.me/${cleanNum}`;
+    }
+    if(ct.email){
+      document.getElementById('cc-email-val').textContent = ct.email;
+      document.getElementById('cc-email').href = `mailto:${ct.email}`;
+    }
+    if(ct.li){
+      document.getElementById('cc-li-val').textContent = ct.li.replace('https://','');
+      document.getElementById('cc-li').href = ct.li;
+    }
+    if(ct.gh){
+      document.getElementById('cc-gh-val').textContent = ct.gh.replace('https://','');
+      document.getElementById('cc-gh').href = ct.gh;
+    }
+    if(ct.waMsg) waDefaultMsg = ct.waMsg;
+    updateWaButton();
+  }catch(e){}
+}
+async function loadAdminContactConfig(){
+  try{
+    const snap = await fbGet('contact_config');
+    if(!snap) return;
+    const ct = JSON.parse(snap);
+    document.getElementById('ct-wa').value = ct.wa||'';
+    document.getElementById('ct-email').value = ct.email||'';
+    document.getElementById('ct-li').value = ct.li||'';
+    document.getElementById('ct-gh').value = ct.gh||'';
+    document.getElementById('ct-wa-msg').value = ct.waMsg||'';
+  }catch(e){}
+}
+async function saveContactConfig(){
+  const ct = {
+    wa: document.getElementById('ct-wa').value,
+    email: document.getElementById('ct-email').value,
+    li: document.getElementById('ct-li').value,
+    gh: document.getElementById('ct-gh').value,
+    waMsg: document.getElementById('ct-wa-msg').value,
+  };
+  await fbSet('contact_config', JSON.stringify(ct));
+  const msg = document.getElementById('ct-save-msg');
+  msg.textContent='✅ Guardado';msg.style.opacity='1';
+  setTimeout(()=>msg.style.opacity='0',3000);
+  loadContactConfig();
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT FORM (send via WhatsApp)
+═══════════════════════════════════════════ */
+function sendContactMsg(){
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email-inp').value.trim();
+  const msg = document.getElementById('cf-msg').value.trim();
+  if(!name||!msg){alert('Por favor completa tu nombre y mensaje.');return;}
+  const text = `Hola Darleys! 👋\nSoy *${name}*${email?' ('+email+')':''}\n\n${msg}`;
+  const num = waNumber.replace(/\D/g,'');
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const url = isMobile
+    ? `whatsapp://send?phone=${num}&text=${encodeURIComponent(text)}`
+    : `https://web.whatsapp.com/send?phone=${num}&text=${encodeURIComponent(text)}`;
+  window.open(url,'_blank');
+  document.getElementById('cf-success').style.display='block';
+  setTimeout(()=>document.getElementById('cf-success').style.display='none',5000);
+}
+
+/* ═══════════════════════════════════════════
+   SOBRE MÍ
+═══════════════════════════════════════════ */
+async function loadSobreConfig(){
+  try{
+    const snap = await fbGet('sobre_config');
+    if(!snap) return;
+    const sm = JSON.parse(snap);
+    if(sm.bio) document.getElementById('about-bio-p').innerHTML = sm.bio;
+    if(sm.status) document.getElementById('about-status-txt').textContent = sm.status;
+    if(sm.skills){
+      const list = document.getElementById('skills-list');
+      list.innerHTML='';
+      sm.skills.split(',').forEach(s=>{
+        const [name,pct] = s.split(':');
+        if(!name||!pct) return;
+        const p = parseInt(pct)||0;
+        list.innerHTML+=`<div class="skill-row"><div class="skill-meta"><span class="skill-name">${name.trim()}</span><span class="skill-pct">${p}%</span></div><div class="skill-bar"><div class="skill-fill" style="width:${p}%"></div></div></div>`;
+      });
+    }
+  }catch(e){}
+}
+async function loadAdminSobreConfig(){
+  try{
+    const snap = await fbGet('sobre_config');
+    if(!snap) return;
+    const sm = JSON.parse(snap);
+    document.getElementById('sm-bio').value = sm.bio||'';
+    document.getElementById('sm-skills').value = sm.skills||'';
+    document.getElementById('sm-status').value = sm.status||'';
+  }catch(e){}
+}
+async function saveSobreConfig(){
+  const sm = {
+    bio: document.getElementById('sm-bio').value,
+    skills: document.getElementById('sm-skills').value,
+    status: document.getElementById('sm-status').value,
+  };
+  await fbSet('sobre_config', JSON.stringify(sm));
+  const msg = document.getElementById('sm-save-msg');
+  msg.textContent='✅ Guardado';msg.style.opacity='1';
+  setTimeout(()=>msg.style.opacity='0',3000);
+  loadSobreConfig();
+}
+
+// Animate skill bars on scroll
+const skillObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.querySelectorAll('.skill-fill').forEach(b=>{
+        const w=b.style.width;b.style.width='0';
+        setTimeout(()=>b.style.width=w,100);
+      });
+      skillObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:.3});
+skillObserver.observe(document.getElementById('skills-list'));
+
+// Load all page configs
+updateWaButton();
+loadAndShowAd();
+loadContactConfig();
+loadSobreConfig();
+
+// Load admin-specific data when panel opens
+const _origOpenAdminPanel = window.openAdminLogin;
+
+/* ═══════════════════════════════════════════
+   UPDATED switchTab — include new tabs
+═══════════════════════════════════════════ */
+window.switchTab = function(tab){
+  document.querySelectorAll('.ap-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ap-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(`tab-${tab}`)?.classList.add('active');
+  event.target.classList.add('active');
+  if(tab==='anuncio') loadAdminAdConfig();
+  if(tab==='contacto') loadAdminContactConfig();
+  if(tab==='sobre') loadAdminSobreConfig();
+};
+
+window.closeAdPopup = closeAdPopup;
+window.saveAdConfig = saveAdConfig;
+window.saveContactConfig = saveContactConfig;
+window.saveSobreConfig = saveSobreConfig;
+window.sendContactMsg = sendContactMsg;
+window.setLang = setLang;
+window.toggleLangDropdown = toggleLangDropdown;
+window.addCustomPage = addCustomPage;
+
+
 init();
 
 // Expose functions to global scope (needed for inline onclick with type=module)
@@ -1414,7 +2155,6 @@ window.closeAdminLogin  = closeAdminLogin;
 window.checkAdminPw     = checkAdminPw;
 window.closeAdminPanel  = closeAdminPanel;
 window.saveAdminChanges = saveAdminChanges;
-window.switchTab        = switchTab;
 window.toggleRepoItem   = toggleRepoItem;
 window.toggleWebItem    = toggleWebItem;
 window.closeModal       = closeModal;
