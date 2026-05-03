@@ -1285,7 +1285,7 @@ async function init(){
     document.getElementById('repo-badge').textContent=`${ALL.length} repos`;
     buildGhFilters();
     document.getElementById('gh-search').addEventListener('input',renderRepos);
-    renderRepos();
+    await applyFirebaseAndRender();
   }catch(e){
     document.getElementById('repo-container').innerHTML='<div class="empty-msg"><span>⚠️</span>No se pudieron cargar los repos.</div>';
   }
